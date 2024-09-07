@@ -10,16 +10,16 @@ echo "
 We will be playing the role of three parties.
 
 The private key and address of the first bidder.
-private_key: APrivateKey1zkpG9Af9z5Ha4ejVyMCqVFXRKknSm8L1ELEwcc4htk9YhVK
-address: aleo1yzlta2q5h8t0fqe0v6dyh9mtv4aggd53fgzr068jvplqhvqsnvzq7pj2ke
+private_key: APrivateKey1zkpBdbyK1xHQzKCqBQqr5DpEc6WmD6BBCHUPQnKTDzzsrmf
+address: aleo1nhl0rlqfrw3uhy6q3we0quk4fn779rq6y9drt3zvdr3vtntqscysz0w3wy
 
 The private key and address of the second bidder.
-private_key: APrivateKey1zkpAFshdsj2EqQzXh5zHceDapFWVCwR6wMCJFfkLYRKupug
-address: aleo1esqchvevwn7n5p84e735w4dtwt2hdtu4dpguwgwy94tsxm2p7qpqmlrta4
+private_key: APrivateKey1zkpADXsLcW5Z2KyLxwFV7Kw5yFLgaEjADFWdvQSjq4V9DeS
+address: aleo1qv3a9t45kgpre4erueu8am62efqnvzw38pcqnglcnzrsgpjd5vgswn9lq8
 
 The private key and address of the auctioneer.
-private_key: APrivateKey1zkp5wvamYgK3WCAdpBQxZqQX8XnuN2u11Y6QprZTriVwZVc
-address: aleo1fxs9s0w97lmkwlcmgn0z3nuxufdee5yck9wqrs0umevp7qs0sg9q5xxxzh
+private_key: APrivateKey1zkp3BLYDGjxba1BSJ3u363MJwJe9TGMRhxDsSHdCWKqrYgf
+address: aleo1snt5w69etddrq0eq4xwapppa8zt4ya6zjfttz59xaap96v0t6q9sq6a585
 "
 
 echo "
@@ -45,20 +45,20 @@ We're going to run the transition function "place_bid", slotting in the first bi
 
 echo '
 NETWORK=testnet3
-PRIVATE_KEY=APrivateKey1zkpG9Af9z5Ha4ejVyMCqVFXRKknSm8L1ELEwcc4htk9YhVK
+PRIVATE_KEY=APrivateKey1zkpBdbyK1xHQzKCqBQqr5DpEc6WmD6BBCHUPQnKTDzzsrmf
 ' > .env
 
-leo run place_bid aleo1yzlta2q5h8t0fqe0v6dyh9mtv4aggd53fgzr068jvplqhvqsnvzq7pj2ke 10u64
+leo run place_bid aleo1nhl0rlqfrw3uhy6q3we0quk4fn779rq6y9drt3zvdr3vtntqscysz0w3wy 10u64
 "
 
 # Swap in the private key of the first bidder to .env.
 echo "
 NETWORK=testnet3
-PRIVATE_KEY=APrivateKey1zkpG9Af9z5Ha4ejVyMCqVFXRKknSm8L1ELEwcc4htk9YhVK
+PRIVATE_KEY=APrivateKey1zkpBdbyK1xHQzKCqBQqr5DpEc6WmD6BBCHUPQnKTDzzsrmf
 " > .env
 
 # Have the first bidder place a bid of 10.
-leo run place_bid aleo1yzlta2q5h8t0fqe0v6dyh9mtv4aggd53fgzr068jvplqhvqsnvzq7pj2ke 10u64
+leo run place_bid aleo1nhl0rlqfrw3uhy6q3we0quk4fn779rq6y9drt3zvdr3vtntqscysz0w3wy 10u64
 
 echo "
 ###############################################################################
@@ -79,20 +79,20 @@ Now we're going to place another bid as the second bidder, so let's switch our k
 
 echo '
 NETWORK=testnet3
-PRIVATE_KEY=APrivateKey1zkpAFshdsj2EqQzXh5zHceDapFWVCwR6wMCJFfkLYRKupug
+PRIVATE_KEY=APrivateKey1zkpADXsLcW5Z2KyLxwFV7Kw5yFLgaEjADFWdvQSjq4V9DeS
 ' > .env
 
-leo run place_bid aleo1esqchvevwn7n5p84e735w4dtwt2hdtu4dpguwgwy94tsxm2p7qpqmlrta4 90u64
+leo run place_bid aleo1qv3a9t45kgpre4erueu8am62efqnvzw38pcqnglcnzrsgpjd5vgswn9lq8 90u64
 "
 
 # Swap in the private key of the second bidder to .env.
 echo "
 NETWORK=testnet3
-PRIVATE_KEY=APrivateKey1zkpAFshdsj2EqQzXh5zHceDapFWVCwR6wMCJFfkLYRKupug
+PRIVATE_KEY=APrivateKey1zkpADXsLcW5Z2KyLxwFV7Kw5yFLgaEjADFWdvQSjq4V9DeS
 " > .env
 
 # Have the second bidder place a bid of 90.
-leo run place_bid aleo1esqchvevwn7n5p84e735w4dtwt2hdtu4dpguwgwy94tsxm2p7qpqmlrta4 90u64
+leo run place_bid aleo1qv3a9t45kgpre4erueu8am62efqnvzw38pcqnglcnzrsgpjd5vgswn9lq8 90u64
 
 echo "
 ###############################################################################
@@ -113,18 +113,18 @@ Now, let's take the role of the auctioneer, so we can determine which bid wins. 
 
 echo '
 NETWORK=testnet3
-PRIVATE_KEY=APrivateKey1zkp5wvamYgK3WCAdpBQxZqQX8XnuN2u11Y6QprZTriVwZVc
+PRIVATE_KEY=APrivateKey1zkp3BLYDGjxba1BSJ3u363MJwJe9TGMRhxDsSHdCWKqrYgf
 ' > .env
 
 leo run resolve '{
-        owner: aleo1fxs9s0w97lmkwlcmgn0z3nuxufdee5yck9wqrs0umevp7qs0sg9q5xxxzh.private,
-        bidder: aleo1yzlta2q5h8t0fqe0v6dyh9mtv4aggd53fgzr068jvplqhvqsnvzq7pj2ke.private,
+        owner: aleo1snt5w69etddrq0eq4xwapppa8zt4ya6zjfttz59xaap96v0t6q9sq6a585.private,
+        bidder: aleo1nhl0rlqfrw3uhy6q3we0quk4fn779rq6y9drt3zvdr3vtntqscysz0w3wy.private,
         amount: 10u64.private,
         is_winner: false.private,
         _nonce: 4668394794828730542675887906815309351994017139223602571716627453741502624516group.public
     }' '{
-        owner: aleo1fxs9s0w97lmkwlcmgn0z3nuxufdee5yck9wqrs0umevp7qs0sg9q5xxxzh.private,
-        bidder: aleo1esqchvevwn7n5p84e735w4dtwt2hdtu4dpguwgwy94tsxm2p7qpqmlrta4.private,
+        owner: aleo1snt5w69etddrq0eq4xwapppa8zt4ya6zjfttz59xaap96v0t6q9sq6a585.private,
+        bidder: aleo1qv3a9t45kgpre4erueu8am62efqnvzw38pcqnglcnzrsgpjd5vgswn9lq8.private,
         amount: 90u64.private,
         is_winner: false.private,
         _nonce: 5952811863753971450641238938606857357746712138665944763541786901326522216736group.public
@@ -134,19 +134,19 @@ leo run resolve '{
 # Swaps in the private key of the auctioneer to .env.
 echo "
 NETWORK=testnet3
-PRIVATE_KEY=APrivateKey1zkp5wvamYgK3WCAdpBQxZqQX8XnuN2u11Y6QprZTriVwZVc
+PRIVATE_KEY=APrivateKey1zkp3BLYDGjxba1BSJ3u363MJwJe9TGMRhxDsSHdCWKqrYgf
 " > .env
 
 # Have the auctioneer select the winning bid.
 leo run resolve "{
-        owner: aleo1fxs9s0w97lmkwlcmgn0z3nuxufdee5yck9wqrs0umevp7qs0sg9q5xxxzh.private,
-        bidder: aleo1yzlta2q5h8t0fqe0v6dyh9mtv4aggd53fgzr068jvplqhvqsnvzq7pj2ke.private,
+        owner: aleo1snt5w69etddrq0eq4xwapppa8zt4ya6zjfttz59xaap96v0t6q9sq6a585.private,
+        bidder: aleo1nhl0rlqfrw3uhy6q3we0quk4fn779rq6y9drt3zvdr3vtntqscysz0w3wy.private,
         amount: 10u64.private,
         is_winner: false.private,
         _nonce: 4668394794828730542675887906815309351994017139223602571716627453741502624516group.public
     }" "{
-        owner: aleo1fxs9s0w97lmkwlcmgn0z3nuxufdee5yck9wqrs0umevp7qs0sg9q5xxxzh.private,
-        bidder: aleo1esqchvevwn7n5p84e735w4dtwt2hdtu4dpguwgwy94tsxm2p7qpqmlrta4.private,
+        owner: aleo1snt5w69etddrq0eq4xwapppa8zt4ya6zjfttz59xaap96v0t6q9sq6a585.private,
+        bidder: aleo1qv3a9t45kgpre4erueu8am62efqnvzw38pcqnglcnzrsgpjd5vgswn9lq8.private,
         amount: 90u64.private,
         is_winner: false.private,
         _nonce: 5952811863753971450641238938606857357746712138665944763541786901326522216736group.public
@@ -170,8 +170,8 @@ echo "
 Keeping the key environment the same since we're still the auctioneer, let's finalize the auction and label the winning output as the winner. The finish transition takes the winning output bid as the input and marks it as such.
 
 leo run finish '{
-        owner: aleo1fxs9s0w97lmkwlcmgn0z3nuxufdee5yck9wqrs0umevp7qs0sg9q5xxxzh.private,
-        bidder: aleo1esqchvevwn7n5p84e735w4dtwt2hdtu4dpguwgwy94tsxm2p7qpqmlrta4.private,
+        owner: aleo1snt5w69etddrq0eq4xwapppa8zt4ya6zjfttz59xaap96v0t6q9sq6a585.private,
+        bidder: aleo1qv3a9t45kgpre4erueu8am62efqnvzw38pcqnglcnzrsgpjd5vgswn9lq8.private,
         amount: 90u64.private,
         is_winner: false.private,
         _nonce: 5952811863753971450641238938606857357746712138665944763541786901326522216736group.public
@@ -180,8 +180,8 @@ leo run finish '{
 
 # Have the auctioneer finish the auction.
 leo run finish "{
-        owner: aleo1fxs9s0w97lmkwlcmgn0z3nuxufdee5yck9wqrs0umevp7qs0sg9q5xxxzh.private,
-        bidder: aleo1esqchvevwn7n5p84e735w4dtwt2hdtu4dpguwgwy94tsxm2p7qpqmlrta4.private,
+        owner: aleo1snt5w69etddrq0eq4xwapppa8zt4ya6zjfttz59xaap96v0t6q9sq6a585.private,
+        bidder: aleo1qv3a9t45kgpre4erueu8am62efqnvzw38pcqnglcnzrsgpjd5vgswn9lq8.private,
         amount: 90u64.private,
         is_winner: false.private,
         _nonce: 5952811863753971450641238938606857357746712138665944763541786901326522216736group.public
